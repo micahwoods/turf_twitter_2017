@@ -52,7 +52,7 @@ Now I had the list of 6,271 Twitter accounts to work with. Each of these, as of 
 
 ### Getting the Tweets from each account for 2017
 
-I looped through these accounts one by one, getting a maximum of 3,000 tweets from each account, selecting only those sent in 2017, and storing those tweets in a file.
+I looped through these accounts one by one, getting a maximum of 3,000 tweets from each account, selecting only those sent in 2017, and storing those tweets in a file. This collected a total of 1,493,849 tweets sent from these accounts last year.
 
 ```r
 # at this point, it is 6271 accounts
@@ -76,9 +76,19 @@ for (i in 1:6271) {
 
 With the exception of a couple accounts that block me, this got tweets from all those 6,271 accounts that sent tweets in 2017.
 
-This was a lot of tweets. 850,000 or so. For most accounts, I got all the tweets from 2017. For the accounts that sent more than 3,000 tweets, I didn't, but I was happy with the most recent 3,000 as an indication of that account's performance. I was most interested for this analysis in what the most influential accounts were, based on original content, so I removed all the retweets.
+This was a lot of tweets -- 1,493,849 to be exact. For most accounts, I got all the tweets from 2017. For the accounts that sent more than 3,000 tweets, I didn't, but I was happy with the most recent 3,000 as an indication of that account's performance. I was most interested for this analysis in what the most influential accounts were, based on original content, so I removed all the retweets. 
 
-Then I made calculations of influence in these categories:
+After removing the retweets, 848,158 original tweets from 2017 remained. I made a couple more cuts. There was one particular bot account that I removed. I know there are some other bots in the remaining data, but they weren't showing up in the rankings -- at least overall rankings -- so I didn't manually remove any others. I also created a variable for the number of tweets sent by each account in 2017, and then I selected only those that sent on average once a month (12 or more tweets for the year).
+
+```r
+# remove this as a bot account
+d2017 <- subset(d2017, screen_name != "KellyMPlumley1")
+
+# get only those with 12+ tweets, for once a month
+d2017$tweet_count <- ave(d2017$is_retweet, d2017$screen_name, FUN = length)
+d17_active <- subset(d2017, tweet_count >= 12)
+```
+This gave me active accounts in 2017. Then based on the accounts that sent the tweets, and data about the tweets themselves, I made calculations of influence in these categories:
 
 * **followers**, the accounts that have a lot of followers probably have more influence because when they send a tweet it has the potential to be seen by more people.
 * **tweet creation rate**, how often does one tweet? I calculated this per hour. For the accounts that sent more than 3,000 tweets in 2017 (and thus I did not capture all of them), I calculated the tweet creation rate based on the number of tweets sent divided by the number of hours since the first tweet was sent until the end of the year.
