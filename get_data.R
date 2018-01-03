@@ -1,11 +1,5 @@
 # get data from selected turf twitter accounts in 2017
 
-# load libraries
-library(rtweet)
-library(dplyr)
-library(ggplot2)
-library(lubridate)
-
 # this sets up the oauth token
 # see https://cran.r-project.org/web/packages/rtweet/vignettes/auth.html
 appname <- "YOUR APP NAME HERE"
