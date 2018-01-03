@@ -31,5 +31,45 @@ agcsa <- get_followers("AGCSA2", n = 20000, retryonratelimit = TRUE)
 iog <- get_followers("the_iog", n = 20000, retryonratelimit = TRUE)
 stma <- get_followers("FieldExperts", n = 20000, retryonratelimit = TRUE)
 ```
+Then I selected the unique accounts that followed at least one of the turf scientists and at least one of the industry organizations.
 
-Then I 
+Next, I selected only the accounts that were set to public and that had more than 50 tweets.
+
+```r
+# this removes the private accounts, also the least active ones
+turf_follower2 <- subset(turf_follower, protected == FALSE & statuses_count >= 50)
+```
+
+And I made one more cut, to remove the accounts that were following more than 10,000 accounts themselves. Those accounts tend to be bot-like and none were turf-related.
+
+Now I had the list of 6,271 Twitter accounts to work with. Each of these, as of 31 Dec 2017 Bangkok time was following me or one of the other turf scientists listed above, and was also following one of the industry organizations, the account was set to public, the account had sent 50 or more tweets or retweets in its lifetime, and the account itself was following less than 10,000 other accounts.
+
+### Getting the Tweets from each account for 2017
+
+I looped through these accounts one by one, getting a maximum of 3,000 tweets from each account, selecting only those sent in 2017, and storing those tweets in a file.
+
+```r
+# at this point, it is 6271 accounts
+# I want to loop through these, getting the tweets and making some calculations
+# I'm fine with 3000
+
+turf_timelines <- data.frame()
+
+for (i in 1:6271) {
+  new_timeline <- get_timeline(as.character(turf_follower3[i, 3]), n = 3000,
+                               check = TRUE)
+  new_timeline_2017 <- subset(new_timeline,
+                              created_at >= "2017-01-01" &
+                                created_at <= "2017-12-31")
+  turf_timelines <- rbind(turf_timelines, new_timeline_2017)
+  print(paste("completed", i, "/6271 accounts"))
+  Sys.sleep(10) # probably not required because of check = TRUE, I wasn't in a hurry so 
+  # I slowed it down a bit
+}
+```
+
+With the exception of a couple accounts that block me, this got tweets from all 6,721 accounts that sent tweets in 2017.
+
+
+
+
