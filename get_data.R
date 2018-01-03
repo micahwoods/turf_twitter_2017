@@ -67,7 +67,7 @@ turf_follower3 <- subset(turf_follower2, friends_count < 1e4)
 
 # at this point, it is 6271 accounts
 # I want to loop through these, getting the tweets and making some calculations
-# I'm fine with the default 3200, I think
+# I'm fine with 3000
 
 turf_timelines <- data.frame()
 
