@@ -6,7 +6,9 @@ I explain what I did for these calculations here in plain language. The [code --
 
 The data were obtained using the [`rtweet`](https://cran.rstudio.com/web/packages/rtweet/) package which I first read about in [this post at rud.is](https://rud.is/b/2017/10/22/a-call-to-tweets-blog-posts/). That was a great introduction, and I agree that [`rtweet`](https://cran.rstudio.com/web/packages/rtweet/) is a great way to work with Twitter data.
 
-I set out in this project wanting to find out which accounts were having the most impact or influence in the turf industry. What would be an *ideal* influential account? I think it would have a lot of followers, so that material shared from the account would go to a large audience. And this *ideal* account would have to send tweets too; an account that sends more tweets is going to reach more people than one that has a lot of followers but sends nothing out. Of course the content matters. The *ideal* account would tweet information that the audience both likes and reshares, and the *ideal* account would also be mentioned and part of the conversation. That's what I looked at.
+I set out in this project wanting to find out which accounts were having the most impact or influence in the turf industry. What would be an *ideal* influential account? 
+
+I think it would have a lot of followers, so that material shared from the account would go to a large audience. And this *ideal* account would have to send tweets too; an account that sends more tweets is going to reach more people than one that has a lot of followers but sends nothing out. Of course the content matters. The *ideal* account would tweet information that the audience both likes and reshares, and the *ideal* account would also be mentioned and part of the conversation. That's what I looked at.
 
 Here's how I did it.
 
