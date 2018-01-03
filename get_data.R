@@ -77,9 +77,10 @@ for (i in 1:6271) {
   new_timeline_2017 <- subset(new_timeline,
                               created_at >= "2017-01-01" &
                                 created_at <= "2017-12-31")
-  turf_timelines4612 <- rbind(turf_timelines4612, new_timeline_2017)
+  turf_timelines <- rbind(turf_timelines, new_timeline_2017)
   print(paste("completed", i, "/6271 accounts"))
-  Sys.sleep(10)
+  Sys.sleep(10) # probably not required because of check = TRUE, I wasn't in a hurry so 
+  # I slowed it down a bit
 }
 
 # now we have data to work with
