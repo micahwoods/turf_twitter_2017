@@ -2,9 +2,13 @@
 
 This is an explanation of how I selected the accounts and obtained the data used in [my analysis](https://twitter.com/asianturfgrass/status/948203012324864000) of turfgrass accounts on Twitter. 
 
-I explain what I did for these calculations here in plain language. The [code](https://github.com/micahwoods/turf_twitter_2017) gives the exact line by line description of data collection and filtering and calculation and ranking. My intention is very soon to post the calculated statistics on a searchable and sortable data table.
+I explain what I did for these calculations here in plain language. The [code -- click here or view on **GitHub** above](https://github.com/micahwoods/turf_twitter_2017) -- to see the line by line description of data collection and filtering and calculation and ranking. My intention is to post the calculated statistics on a searchable and sortable data table.
 
 The data were obtained using the [`rtweet`](https://cran.rstudio.com/web/packages/rtweet/) package which I first read about in [this post at rud.is](https://rud.is/b/2017/10/22/a-call-to-tweets-blog-posts/). That was a great introduction, and I agree that [`rtweet`](https://cran.rstudio.com/web/packages/rtweet/) is a great way to work with Twitter data.
+
+I set out in this project wanting to find out which accounts were having the most impact or influence in the turf industry. What would be an *ideal* influential account? I think it would have a lot of followers, so that material shared from the account would go to a large audience. And this *ideal* account would have to send tweets too; an account that sends more tweets is going to reach more people than one that has a lot of followers but sends nothing out. Of course the content matters. The *ideal* account would tweet information that the audience both likes and reshares, and the *ideal* account would also be mentioned and part of the conversation. That's what I looked at.
+
+Here's how I did it.
 
 ### Which accounts did I look at, or what is *Turf Twitter*?
 
@@ -69,6 +73,44 @@ for (i in 1:6271) {
 ```
 
 With the exception of a couple accounts that block me, this got tweets from all 6,721 accounts that sent tweets in 2017.
+
+This was a lot of tweets. 850,000 or so. For most accounts, I got all the tweets from 2017. For the accounts that sent more than 3,000 tweets, I didn't, but I was happy with the most recent 3,000 as an indication of that account's performance. I was most interested for this analysis in what the most influential accounts were, based on original content, so I removed all the retweets.
+
+Then I made calculations of influence in these categories:
+
+* **followers**, the accounts that have a lot of followers probably have more influence because when they send a tweet it has the potential to be seen by more people.
+* **tweet creation rate**, how often does one tweet? I calculated this per hour. For the accounts that sent more than 3,000 tweets in 2017 (and thus I did not capture all of them), I calculated the tweet creation rate based on the number of tweets sent divided by the number of hours since the first tweet was sent until the end of the year.
+* **favorites h-index**, this measure I first saw from [influencetracker.com](http://www.influencetracker.com/) and I thought it was a good measure to capture the *likeability* of an account. An h-index identifies the number of tweets that have been favorited at least that many times. As an example, if my favorites h-index was 13, that means I had 13 tweets in 2017 that each had 13 or more favorites. For more about the h-index, see [Wikipedia](https://en.wikipedia.org/wiki/H-index). If an account has a high favorites h-index, that means it is sharing a lot of material that other people like.
+* **retweets h-index**, this value is the number of tweets that have been retweeted at least that many times. This is an indication of interest or quality of the content being shared. When others retweet something, there is an implication that they think the information is worth sharing, or that they would like to broaded the conversation on that topic.
+* **mentions**, I added up all the mentions for each account, after putting all the mentions into a character vector. The `rtweet` package has a really clean delivery of these mentions. It took me a while to get the strings that matched exactly the username. I kept getting extra returns for GCSAA and striturf in particular, because people who work for those organizations often include that string in their username. I finally figured out the solution to put word boundaries on the usernames.
+
+```r
+mentions_total <- data.frame()
+
+j <- length(active_now$screen_name)
+
+for (i in 1:j) {
+  user <- as.character(active_now[i, 1])
+
+  # having problems with this stringr version as I
+  # think it gets fragments such as "GCSAA_NW"
+  # when counting for example "GCSAA" but the word boundaries fix this
+
+  sum_mentions <- sum(str_count(mention_data, 
+                                paste0("\\b", user, "\\b")))
+  
+  newline <- cbind.data.frame(user, sum_mentions)
+  mentions_total <- rbind.data.frame(mentions_total, newline)
+}
+```
+
+### The ranking
+
+In each of those categories -- followers, tweet creation rate, favorites h-index, retweets h-index, and total mentions -- I then ranked from those with the highest value to those with the lowest value. Then I added the rankings together. Those with the lowest total ranking I called the most influential.
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">That took a while, but I finally got all the data for a selection of 6,721 accounts. Here&#39;s the overall ranking. <a href="https://t.co/qExt2cKouJ">pic.twitter.com/qExt2cKouJ</a></p>&mdash; Micah Woods (@asianturfgrass) <a href="https://twitter.com/asianturfgrass/status/948203012324864000?ref_src=twsrc%5Etfw">January 2, 2018</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
 
 
 
