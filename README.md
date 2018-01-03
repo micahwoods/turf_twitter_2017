@@ -72,7 +72,7 @@ for (i in 1:6271) {
 }
 ```
 
-With the exception of a couple accounts that block me, this got tweets from all 6,721 accounts that sent tweets in 2017.
+With the exception of a couple accounts that block me, this got tweets from all those 6,271 accounts that sent tweets in 2017.
 
 This was a lot of tweets. 850,000 or so. For most accounts, I got all the tweets from 2017. For the accounts that sent more than 3,000 tweets, I didn't, but I was happy with the most recent 3,000 as an indication of that account's performance. I was most interested for this analysis in what the most influential accounts were, based on original content, so I removed all the retweets.
 
@@ -108,7 +108,7 @@ for (i in 1:j) {
 
 In each of those categories -- followers, tweet creation rate, favorites h-index, retweets h-index, and total mentions -- I then ranked from those with the highest value to those with the lowest value. Then I added the rankings together. Those with the lowest total ranking I called the most influential.
 
-<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">That took a while, but I finally got all the data for a selection of 6,721 accounts. Here&#39;s the overall ranking. <a href="https://t.co/qExt2cKouJ">pic.twitter.com/qExt2cKouJ</a></p>&mdash; Micah Woods (@asianturfgrass) <a href="https://twitter.com/asianturfgrass/status/948203012324864000?ref_src=twsrc%5Etfw">January 2, 2018</a></blockquote>
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">That took a while, but I finally got all the data for a selection of 6,271 accounts. Here&#39;s the overall ranking. <a href="https://t.co/qExt2cKouJ">pic.twitter.com/qExt2cKouJ</a></p>&mdash; Micah Woods (@asianturfgrass) <a href="https://twitter.com/asianturfgrass/status/948203012324864000?ref_src=twsrc%5Etfw">January 2, 2018</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
