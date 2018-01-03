@@ -1,22 +1,5 @@
 # this gets the data organized and calculates the favorites h-index
 
-# load libraries
-library(ggplot2)
-library(cowplot)
-library(lubridate)
-library(dplyr)
-library(beepr)
-library(stringr)
-
-# This function returns the H-INDEX when the favorite or retweet count
-# is a sorted vector, with the favorites or retweet count in descending order
-H_INDEX <- function(x) {
-  y <- 1:length(x)
-  step1 <- x >= y
-  step2 <- max(which(step1 == TRUE))
-  return(step2)
-}
-
 # we read the data in from a file, or have the turftimelines file 
 # created by the get_data.R script
 

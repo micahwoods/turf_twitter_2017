@@ -20,6 +20,7 @@ H_INDEX <- function(x) {
 }
 
 # one will need to get the oauth token before making any calls to the API
-# source("get_data.R")
+source("get_data.R")
 
 # this gets the data ready for analysis and calculates the fav h-index
+source("r/turf_twitter_2017_startup.R")
