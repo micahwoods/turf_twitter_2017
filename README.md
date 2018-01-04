@@ -2,7 +2,11 @@
 
 This is an explanation of how I selected the accounts and obtained the data used in [my analysis](https://twitter.com/asianturfgrass/status/948203012324864000) of turfgrass accounts on Twitter. 
 
-I explain what I did for these calculations here in plain language. The [code -- click here or view on **GitHub** above](https://github.com/micahwoods/turf_twitter_2017) -- to see the line by line description of data collection and filtering and calculation and ranking. My intention is to post the calculated statistics on a searchable and sortable data table.
+I explain what I did for these calculations here in plain language. The [code -- click here or view on **GitHub** above](https://github.com/micahwoods/turf_twitter_2017) -- to see the line by line description of data collection and filtering and calculation and ranking. Any code below is excerpts to highlight some key points.
+
+Results of these calculations are posted in a searchable data table in the [Turfgrass Twitter 2017](https://asianturfgrass.shinyapps.io/turf_twitter/) Shiny app.
+
+### Getting started
 
 The data were obtained using the [`rtweet`](https://cran.rstudio.com/web/packages/rtweet/) package which I first read about in [this post at rud.is](https://rud.is/b/2017/10/22/a-call-to-tweets-blog-posts/). That was a great introduction, and I agree that [`rtweet`](https://cran.rstudio.com/web/packages/rtweet/) is a great way to work with Twitter data.
 
