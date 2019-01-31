@@ -1,5 +1,7 @@
 ## Turf Twitter 2017 analysis
 
+*If you are looking for the 2018 rankings, you'll [find them here](https://asianturfgrass.shinyapps.io/turf_twitter_2018/).*
+
 This is an explanation of how I selected the accounts and obtained the data used in [my analysis](https://twitter.com/asianturfgrass/status/948203012324864000) of turfgrass accounts on Twitter. 
 
 I explain what I did for these calculations here in plain language. The [code -- click here or view on **GitHub** above](https://github.com/micahwoods/turf_twitter_2017) -- to see the line by line description of data collection and filtering and calculation and ranking. Any code below is excerpts to highlight some key points.
@@ -126,9 +128,3 @@ In each of those categories -- followers, tweet creation rate, favorites h-index
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Here are the overall rankings again, with top 50s for 3 categories to follow. Yesterday I wrote 6,721. It was actually 6,271 accounts studied. <a href="https://t.co/cnL20wRag1">pic.twitter.com/cnL20wRag1</a></p>&mdash; Micah Woods (@asianturfgrass) <a href="https://twitter.com/asianturfgrass/status/948568341450448897?ref_src=twsrc%5Etfw">January 3, 2018</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-
-
-
-
-
